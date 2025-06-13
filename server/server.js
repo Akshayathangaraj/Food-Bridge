@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken'); // <-- added jwt
-const Donation = require('./models/Donation'); // adjust path as necessary
 
 
 const app = express();
@@ -216,16 +215,6 @@ app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
   } catch (error) {
     console.error('Claim donation error:', error);
     res.status(500).json({ message: 'Server error' });
-  }
-});
-// Get all donations created by a specific user
-app.get('/api/donations/user/:userId', async (req, res) => {
-  try {
-    const userDonations = await Donation.find({ userId: req.params.userId }).sort({ availableDateTime: -1 });
-    res.status(200).json(userDonations);
-  } catch (error) {
-    console.error('Error fetching user donations:', error);
-    res.status(500).json({ message: 'Server error while fetching user donations' });
   }
 });
 
