@@ -62,9 +62,20 @@ const FoodAvailable = () => {
     }
   };
 
+  // Timezone-aware filtering using Asia/Kolkata (IST)
   const filteredDonations = donations.filter(d => {
     const matchesDistrict = d.address.district.toLowerCase().includes(search.toLowerCase());
-    const notExpired = new Date(d.availableDateTime) > new Date();
+
+    // Current time in IST
+    const nowISTString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const nowIST = new Date(nowISTString);
+
+    // Donation availableDateTime converted to IST date string and then to Date object
+    const donationISTString = new Date(d.availableDateTime).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const donationDateIST = new Date(donationISTString);
+
+    const notExpired = donationDateIST > nowIST;
+
     return matchesDistrict && notExpired;
   });
 
