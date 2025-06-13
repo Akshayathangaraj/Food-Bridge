@@ -8,6 +8,8 @@ import UserDashboard from './components/UserDashboard';
 import Donate from './components/Donate'; // Add if exists
 import FoodAvailable from './components/FoodAvailable'; // Add if exists
 import ProtectedRoute from './components/ProtectedRoute';
+import MyDonations from './components/MyDonations'; // ⬅️ Add this line
+
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         />
         <Route path="/user/:userId/donate" element={<Donate />} />
         <Route path="/user/:userId/food-available" element={<FoodAvailable />} />
+        <Route path="/user/:userId/my-donations" element={<MyDonations />} />
+
       </Routes>
     </Router>
   );

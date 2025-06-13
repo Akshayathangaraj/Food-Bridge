@@ -58,6 +58,22 @@
   "noAccount": "Don’t have an account?",
   "signupHere": "Sign up",
   "english": "English",
-  "tamil": "Tamil"
+  "tamil": "Tamil",
+  "dashboard": "User Dashboard",
+  "welcomeUser": "Welcome, {{name}}!",
+  "myDonations": "My Donations",
+  "myClaims": "My Claims",
+  "viewAvailableFood": "View Available Food",
+  "donateNow": "Donate Now",
+  "logout": "Logout",
+  "noDonations": "You haven’t donated any food yet.",
+  "noClaims": "You haven’t claimed any food yet.",
+  "claimedOn": "Claimed On",
+  "foodItem": "Food Item",
+  "actions": "Actions",
+  "viewDetails": "View Details",
+  "backToHome": "Back to Home",
+  "donationHistory": "Donation History",
+  "claimedDonations": "Claimed Donations"
 }
 
