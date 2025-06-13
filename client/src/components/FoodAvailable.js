@@ -39,7 +39,7 @@ const FoodAvailable = () => {
     if (window.confirm(t('confirmClaim', { name }))) {
       try {
         await axios.put(
-          `http://localhost:5000/api/donations/${id}/claim`,
+          `https://food-bridge-server.onrender.com/api/donations/${id}/claim`,
           { userId },
           {
             headers: {
@@ -62,35 +62,29 @@ const FoodAvailable = () => {
     }
   };
 
-  // Helper to format date in IST
+  // Format to IST (India Time)
   const formatDateToIST = (dateStr) => {
     return new Date(dateStr).toLocaleString('en-IN', {
       timeZone: 'Asia/Kolkata',
       year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
+      month: 'short',
+      day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit',
-      hour12: false,
+      hour12: true,
     });
   };
 
-  // Timezone-aware filtering using Asia/Kolkata (IST)
   const filteredDonations = donations.filter(d => {
     const matchesDistrict = d.address.district.toLowerCase().includes(search.toLowerCase());
 
-    // Current time in IST
-    const nowISTString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    const nowIST = new Date(nowISTString);
+    const nowIST = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const now = new Date(nowIST);
 
-    // Donation availableDateTime converted to IST date string and then to Date object
-    const donationISTString = new Date(d.availableDateTime).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    const donationDateIST = new Date(donationISTString);
+    const donationIST = new Date(d.availableDateTime).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const donationDate = new Date(donationIST);
 
-    const notExpired = donationDateIST > nowIST;
-
-    return matchesDistrict && notExpired;
+    return matchesDistrict && donationDate > now;
   });
 
   return (
