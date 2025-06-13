@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // ✅ Required for phone auth
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAfQTJj22_H_Z1HITWJLWfkbNGlVYUriLA",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "otp-verification-a24e7.firebaseapp.com",
   projectId: "otp-verification-a24e7",
   storageBucket: "otp-verification-a24e7.appspot.com",
