@@ -1,0 +1,88 @@
+.donate-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.donate-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2f855a; /* dark green */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.donate-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  color: #2d3748; /* dark gray */
+}
+
+.donate-form input[type="text"],
+.donate-form input[type="tel"],
+.donate-form input[type="datetime-local"],
+.donate-form select,
+.donate-form textarea {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 2px solid #cbd5e0; /* light gray */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1a202c;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.donate-form input[type="text"]:focus,
+.donate-form input[type="tel"]:focus,
+.donate-form input[type="datetime-local"]:focus,
+.donate-form select:focus,
+.donate-form textarea:focus {
+  border-color: #38a169; /* green */
+  outline: none;
+  box-shadow: 0 0 8px rgba(56,161,105,0.4);
+}
+
+.donate-submit-btn {
+  width: 100%;
+  background-color: #38a169;
+  color: white;
+  padding: 0.9rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(56,161,105,0.4);
+}
+
+.donate-submit-btn:hover {
+  background-color: #2f855a;
+  box-shadow: 0 6px 15px rgba(47,133,90,0.6);
+}
+
+.donate-message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+}
+
+.donate-message.success {
+  color: #276749; /* dark green */
+}
+
+.donate-message.error {
+  color: #c53030; /* red */
+}
