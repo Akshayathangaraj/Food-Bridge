@@ -56,6 +56,8 @@
   "loginFailed": "Login failed",
   "loginError": "Something went wrong. Please try again later.",
   "noAccount": "Don’t have an account?",
-  "signupHere": "Sign up"
+  "signupHere": "Sign up",
+  "english": "English",
+  "tamil": "Tamil"
 }
 
