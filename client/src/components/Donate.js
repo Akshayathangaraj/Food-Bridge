@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Donate.css';
 import { useTranslation } from 'react-i18next';
-const { i18n, t } = useTranslation();
 
 const tamilNaduDistricts = [
   "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore",
