@@ -36,7 +36,7 @@
   "availableDonations": "கிடைக்கின்ற உணவுப் பதிவுகள்",
   "searchByDistrict": "மாவட்டத்தின் அடிப்படையில் தேடுங்கள்",
   "food": "உணவு",
-  "availableAt": "கிடைக்கும் நேரம்",
+  "availableUntil": "கால வரம்பு வரை",
   "address": "முகவரி",
   "claimed": "ஏற்கப்பட்டது",
   "claim": "ஏற்கவும்",

@@ -101,7 +101,7 @@ const FoodAvailable = () => {
           <div key={d._id} className="border p-4 rounded shadow">
             <h3 className="text-lg font-semibold">{d.name}</h3>
             <p><strong>{t('food')}:</strong> {d.foodDescription}</p>
-            <p><strong>{t('availableAt')}:</strong> {formatDateToIST(d.availableDateTime)}</p>
+            <p><strong>{t('availableUntil')}:</strong> {formatDateToIST(d.availableDateTime)}</p>
             <p><strong>{t('address')}:</strong><br />
               {d.address.detailedAddress}, {d.address.district}, {d.address.state} - {d.address.pincode}
             </p>
