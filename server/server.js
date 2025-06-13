@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken'); // <-- added jwt
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -219,14 +218,17 @@ app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-// Catch-all route to serve React's index.html for any unmatched route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
+  // Check if app._router exists
+  if (app._router && app._router.stack) {
+    app._router.stack.forEach((r) => {
+      if (r.route && r.route.path) {
+        console.log(`Route path: ${r.route.path}`);
+      }
+    });
+  } else {
+    console.warn('No routes are registered on app._router.');
+  }
 });
