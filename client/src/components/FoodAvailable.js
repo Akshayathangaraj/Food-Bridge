@@ -62,10 +62,11 @@ const FoodAvailable = () => {
     }
   };
 
-  // Format to IST (India Time)
+  // ✅ Updated: Subtract 5.5 hours from the time using math
   const formatDateToIST = (dateStr) => {
-    return new Date(dateStr).toLocaleString('en-IN', {
-      timeZone: 'Asia/Kolkata',
+    const date = new Date(dateStr);
+    const adjustedTime = new Date(date.getTime() - 5.5 * 60 * 60 * 1000);
+    return adjustedTime.toLocaleString('en-IN', {
       year: 'numeric',
       month: 'short',
       day: '2-digit',
@@ -78,11 +79,9 @@ const FoodAvailable = () => {
   const filteredDonations = donations.filter(d => {
     const matchesDistrict = d.address.district.toLowerCase().includes(search.toLowerCase());
 
-    const nowIST = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    const now = new Date(nowIST);
+    const now = new Date();
 
-    const donationIST = new Date(d.availableDateTime).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    const donationDate = new Date(donationIST);
+    const donationDate = new Date(new Date(d.availableDateTime).getTime() - 5.5 * 60 * 60 * 1000);
 
     return matchesDistrict && donationDate > now;
   });
