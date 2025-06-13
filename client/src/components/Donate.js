@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Donate.css';
 import { useTranslation } from 'react-i18next';
+const { i18n, t } = useTranslation();
 
 const tamilNaduDistricts = [
   "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore",
@@ -72,7 +73,6 @@ console.log("Submitting form with data:", formData);
       });
       setDistrictOptions([]);
     } catch (err) {
-       console.error('Submit error:', err.response?.data || err.message);
       setMessage(t('submissionFailed'));
     }
   };
