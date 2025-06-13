@@ -47,6 +47,7 @@ const Donate = () => {
       setFormData(prev => ({ ...prev, district: '' }));
     }
   };
+console.log("Submitting form with data:", formData);
 
   const handleSubmit = async e => {
     e.preventDefault();
