@@ -190,8 +190,7 @@ app.get('/api/donations', async (req, res) => {
 });
 
 // Claim Donation Route — protected with JWT middleware
-await axios.put(
-  `https://food-bridge-server.onrender.com/api/donations/${id}/claim`, authenticateToken, async (req, res) => {
+app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
   const donationId = req.params.id;
   const userId = req.user.userId;
 
