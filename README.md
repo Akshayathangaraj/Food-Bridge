@@ -1,5 +1,6 @@
-# 🍲 Food Bridge
-![Food Bridge (512 x 512 px)](https://github.com/user-attachments/assets/52325ef7-a05a-41b4-a05f-5fb850710f1d)
+# 🍲 Food Bridge<p align="center">
+  <img src="https://github.com/user-attachments/assets/52325ef7-a05a-41b4-a05f-5fb850710f1d" alt="Food Bridge Logo" width="120" height="120"/>
+</p>
 
 
 **Food Bridge** is a social platform built using the **MERN stack (MongoDB, Express.js, React, Node.js)** to connect food donors and recipients. The platform encourages food sharing to reduce food waste and help those in need — all while keeping user experience simple, secure, and accessible in Tamil Nadu.
