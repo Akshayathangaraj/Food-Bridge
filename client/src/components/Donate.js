@@ -72,6 +72,7 @@ console.log("Submitting form with data:", formData);
       });
       setDistrictOptions([]);
     } catch (err) {
+       console.error('Submit error:', err.response?.data || err.message);
       setMessage(t('submissionFailed'));
     }
   };
