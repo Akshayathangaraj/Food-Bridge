@@ -34,7 +34,7 @@
 🧑‍💻 Developer
 Made with ❤️ by Akshayathangaraj
 - B.Tech IT Student | Tamil Nadu, India 
-- 🔗 Connect on [LinkedIn][https://www.linkedin.com/in/akshaya-profile/]
+- 🔗 Connect on [LinkedIn](https://www.linkedin.com/in/akshaya-profile/)
 
 “Let’s bridge the gap with love and food!” 🍛
 
