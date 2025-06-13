@@ -9,13 +9,13 @@
 
 ## 🚀 Features
 
-- 📱 **User Signup with OTP verification** via Firebase SMS
-- 🌐 **Tamil language support** (via i18n)
-- 📝 **Donor Form** for submitting food availability details
-- 📦 **Food Available Page** with listed food donations
-- 📍 **District-based Search** for local food
-- 🔒 **Secure form validation**
-- 📱 **Mobile-friendly design** and PWA-ready architecture
+- **User Signup with OTP verification** via Firebase SMS
+- **Tamil language support** (via i18n)
+- **Donor Form** for submitting food availability details
+- **Food Available Page** with listed food donations
+- **District-based Search** for local food
+- **Secure form validation**
+- **Mobile-friendly design** and PWA-ready architecture
 
 ---
 
