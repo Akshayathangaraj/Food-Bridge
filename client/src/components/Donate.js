@@ -57,7 +57,7 @@ const Donate = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/donate', {
+      await axios.post('https://food-bridge-server.onrender.com/api/donate', {
         name,
         foodDescription,
         availableDateTime,

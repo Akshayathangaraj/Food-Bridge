@@ -112,7 +112,7 @@ const Signup = () => {
 
   const submitForm = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', formData);
+      const response = await axios.post('https://food-bridge-server.onrender.com/api/signup', formData);
       alert(response.data.message);
       console.log("Signup successful ✅", response.data);
 

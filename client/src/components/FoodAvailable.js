@@ -14,7 +14,7 @@ const FoodAvailable = () => {
 
   const fetchDonations = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/donations');
+      const res = await axios.get('https://food-bridge-server.onrender.com/api/donations');
       setDonations(res.data);
 
       const claimedContacts = {};
