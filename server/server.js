@@ -1,3 +1,4 @@
+require('dotenv').config(); // Add at the top
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -16,13 +17,11 @@ app.use(bodyParser.json());
 
 
 // MongoDB connection
-const mongoURI = 'mongodb://localhost:27017/foodbridge'; // Replace with your MongoDB URI
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log('MongoDB connection error:', err));
+console.log('MONGO_URI:', process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log('MongoDB connection error:', err));
+
 
 // User Schema
 const userSchema = new mongoose.Schema({
