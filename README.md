@@ -33,8 +33,8 @@
 ##
 🧑‍💻 Developer
 Made with ❤️ by Akshayathangaraj
-B.Tech IT Student | Tamil Nadu, India 
-🔗 Connect on [LinkedIn](https://www.linkedin.com/in/akshaya/)
+- B.Tech IT Student | Tamil Nadu, India 
+- 🔗 Connect on [LinkedIn](https://www.linkedin.com/in/akshaya/)
 
 “Let’s bridge the gap with love and food!” 🍛
 
