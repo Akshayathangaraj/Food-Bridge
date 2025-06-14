@@ -218,7 +218,7 @@ app.get('/api/my-donations', authenticateToken, async (req, res) => {
 app.put('/api/donations/:id', authenticateToken, async (req, res) => {
   try {
     const updated = await FoodDonation.findOneAndUpdate(
-      { _id: req.params.id, phone: req.user.phone },
+      { _id: req.params.id, userId: req.user.userId },
       req.body,
       { new: true }
     );
@@ -230,10 +230,11 @@ app.put('/api/donations/:id', authenticateToken, async (req, res) => {
   }
 });
 
+
 // Delete donation
 app.delete('/api/donations/:id', authenticateToken, async (req, res) => {
   try {
-    const deleted = await FoodDonation.findOneAndDelete({ _id: req.params.id, phone: req.user.phone });
+    const deleted = await FoodDonation.findOneAndDelete({ _id: req.params.id, userId: req.user.userId });
     if (!deleted) return res.status(404).json({ message: 'Not found or unauthorized' });
     res.json({ message: 'Deleted successfully' });
   } catch (err) {
@@ -241,6 +242,7 @@ app.delete('/api/donations/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 // Claimed Donations by logged-in user
 app.get('/api/claimed-donations', authenticateToken, async (req, res) => {
   try {

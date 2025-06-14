@@ -11,9 +11,6 @@ const ClaimedList = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetchClaimedDonations();
-  }, []);
-
   const fetchClaimedDonations = async () => {
     try {
       const res = await axios.get('https://food-bridge-server.onrender.com/api/claimed-donations', {
@@ -25,7 +22,9 @@ const ClaimedList = () => {
     }
   };
 
-  return (
+  fetchClaimedDonations();
+}, [token]); // Add `token` if it might change
+ (
     <div className="claimed-container">
       <h2>{t('claimedList')}</h2>
       {claimed.length === 0 ? (
@@ -35,7 +34,10 @@ const ClaimedList = () => {
           <div key={item._id} className="claimed-card">
             <h4>{item.foodDescription}</h4>
             <p>{new Date(item.availableDateTime).toLocaleString()}</p>
-            <p>{item.address?.district} – {item.address?.detailedAddress}</p>
+            <p>
+  {item?.address?.district || 'N/A'} – {item?.address?.detailedAddress || 'N/A'}
+</p>
+
           </div>
         ))
       )}
