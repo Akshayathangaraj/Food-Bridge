@@ -32,7 +32,7 @@ function App() {
         <Route path="/user/:userId/donate" element={<Donate />} />
         <Route path="/user/:userId/food-available" element={<FoodAvailable />} />
         <Route path="/user/:userId/my-donations" element={<MyDonations />} />
-        <Route path="/user/:userId/my-donations" element={<ClaimedList />} />
+        <Route path="/user/:userId/claimed-donations" element={<ClaimedList />} />
 
       </Routes>
     </Router>
