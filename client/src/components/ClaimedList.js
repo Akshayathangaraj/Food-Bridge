@@ -1,4 +1,3 @@
-// src/pages/ClaimedList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ClaimedList.css';
@@ -11,20 +10,22 @@ const ClaimedList = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-  const fetchClaimedDonations = async () => {
-    try {
-      const res = await axios.get('https://food-bridge-server.onrender.com/api/claimed-donations', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setClaimed(res.data);
-    } catch (err) {
-      console.error('Failed to fetch claimed donations');
-    }
-  };
+    const fetchClaimedDonations = async () => {
+      try {
+        const res = await axios.get('https://food-bridge-server.onrender.com/api/claimed-donations', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setClaimed(res.data);
+      } catch (err) {
+        console.error('Failed to fetch claimed donations');
+      }
+    };
 
-  fetchClaimedDonations();
-}, [token]); // Add `token` if it might change
- (
+    fetchClaimedDonations();
+  }, [token]);
+
+  // ✅ Add return here
+  return (
     <div className="claimed-container">
       <h2>{t('claimedList')}</h2>
       {claimed.length === 0 ? (
@@ -35,9 +36,8 @@ const ClaimedList = () => {
             <h4>{item.foodDescription}</h4>
             <p>{new Date(item.availableDateTime).toLocaleString()}</p>
             <p>
-  {item?.address?.district || 'N/A'} – {item?.address?.detailedAddress || 'N/A'}
-</p>
-
+              {item?.address?.district || 'N/A'} – {item?.address?.detailedAddress || 'N/A'}
+            </p>
           </div>
         ))
       )}
