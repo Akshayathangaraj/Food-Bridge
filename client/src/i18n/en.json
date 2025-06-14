@@ -74,6 +74,15 @@
   "viewDetails": "View Details",
   "backToHome": "Back to Home",
   "donationHistory": "Donation History",
-  "claimedDonations": "Claimed Donations"
+  "claimedDonations": "Claimed Donations",
+  "edit": "Edit",
+  "delete": "Delete",
+  "availableOn": "Available On",
+  "claimedList": "Claimed Donations",
+  "claimedAt": "Claimed At",
+  "confirmDelete": "Are you sure you want to delete this donation?",
+  "updateSuccess": "Donation updated successfully",
+  "deleteSuccess": "Donation deleted successfully"
 }
+
 
