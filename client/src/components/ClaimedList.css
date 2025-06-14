@@ -1,0 +1,14 @@
+/* src/pages/ClaimedList.css */
+.claimed-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 1rem;
+}
+
+.claimed-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  background-color: #eaf8ea;
+}

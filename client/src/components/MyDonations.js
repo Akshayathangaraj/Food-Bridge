@@ -1,10 +1,17 @@
+// src/pages/MyDonations.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './MyDonations.css';
 import { useTranslation } from 'react-i18next';
 
 const MyDonations = () => {
   const { t } = useTranslation();
-  const [myDonations, setMyDonations] = useState([]);
+  const [donations, setDonations] = useState([]);
+  const [editingDonation, setEditingDonation] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [message, setMessage] = useState('');
+
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fetchMyDonations();
@@ -12,84 +19,87 @@ const MyDonations = () => {
 
   const fetchMyDonations = async () => {
     try {
-      const userId = localStorage.getItem('userId');
-      const res = await axios.get(`https://food-bridge-server.onrender.com/api/donations/user/${userId}`);
-      setMyDonations(res.data);
-    } catch (error) {
-      console.error('Failed to fetch user donations:', error);
-    }
-  };
-  const formatDateMinus5H30 = (dateStr) => {
-    const originalDate = new Date(dateStr);
-    const adjustedDate = new Date(originalDate.getTime() - (5.5 * 60 * 60 * 1000));
-    return adjustedDate.toLocaleString('en-IN', {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true,
-    });
-  };
-
-  const handleDelete = async (donationId) => {
-    if (window.confirm(t('confirmDelete'))) {
-      try {
-        await axios.delete(`https://food-bridge-server.onrender.com/api/donations/${donationId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        setMyDonations(prev => prev.filter(d => d._id !== donationId));
-        alert(t('deletedSuccessfully'));
-      } catch (error) {
-        console.error('Failed to delete donation:', error);
-        alert(t('deleteFailed'));
-      }
+      const res = await axios.get('https://food-bridge-server.onrender.com/api/my-donations', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setDonations(res.data);
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  const handleEdit = (donation) => {
-    alert(t('editNotImplemented') + `\n\nID: ${donation._id}`);
+  const handleDelete = async (id) => {
+    if (!window.confirm(t('confirmDelete'))) return;
+    try {
+      await axios.delete(`https://food-bridge-server.onrender.com/api/donations/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setMessage(t('deleteSuccess'));
+      fetchMyDonations();
+    } catch (err) {
+      setMessage(t('deleteError'));
+    }
+  };
+
+  const handleEditClick = (donation) => {
+    setEditingDonation(donation._id);
+    setFormData({ ...donation });
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(
+        `https://food-bridge-server.onrender.com/api/donations/${editingDonation}`,
+        formData,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setMessage(t('updateSuccess'));
+      setEditingDonation(null);
+      fetchMyDonations();
+    } catch (err) {
+      setMessage(t('updateError'));
+    }
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">{t('myDonations')}</h2>
-      {myDonations.length === 0 ? (
-        <p className="text-gray-600">{t('noDonationsFound')}</p>
+    <div className="my-donations-container">
+      <h2>{t('myDonations')}</h2>
+      {message && <p className="status-msg">{message}</p>}
+      {donations.length === 0 ? (
+        <p>{t('noDonationsYet')}</p>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {myDonations.map(d => (
-            <div key={d._id} className="border p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">{d.name}</h3>
-              <p><strong>{t('food')}:</strong> {d.foodDescription}</p>
-              <p><strong>{t('availableAt')}:</strong> {formatDateMinus5H30(d.availableDateTime)}</p>
-              <p><strong>{t('address')}:</strong><br />
-                {d.address.detailedAddress}, {d.address.district}, {d.address.state} - {d.address.pincode}
-              </p>
-              {d.claimed ? (
-                <p className="mt-2 text-red-600 font-semibold">{t('claimed')}</p>
-              ) : (
-                <p className="mt-2 text-green-600">{t('notClaimed')}</p>
-              )}
-              <div className="mt-3 flex gap-2">
-                <button
-                  className="bg-yellow-500 text-white px-3 py-1 rounded"
-                  onClick={() => handleEdit(d)}
-                >
-                  {t('edit')}
-                </button>
-                <button
-                  className="bg-red-600 text-white px-3 py-1 rounded"
-                  onClick={() => handleDelete(d._id)}
-                >
-                  {t('delete')}
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        donations.map(d => (
+          <div key={d._id} className="donation-card">
+            {editingDonation === d._id ? (
+              <form onSubmit={handleEditSubmit} className="edit-form">
+                <input name="foodDescription" value={formData.foodDescription} onChange={handleEditChange} />
+                <input type="datetime-local" name="availableDateTime" value={formData.availableDateTime?.slice(0, 16)} onChange={handleEditChange} />
+                <textarea name="address.detailedAddress" value={formData.address?.detailedAddress} onChange={(e) =>
+                  setFormData(prev => ({
+                    ...prev,
+                    address: { ...prev.address, detailedAddress: e.target.value }
+                  }))
+                } />
+                <button type="submit">{t('save')}</button>
+                <button type="button" onClick={() => setEditingDonation(null)}>{t('cancel')}</button>
+              </form>
+            ) : (
+              <>
+                <h4>{d.foodDescription}</h4>
+                <p>{new Date(d.availableDateTime).toLocaleString()}</p>
+                <p>{d.address?.detailedAddress}</p>
+                <button onClick={() => handleEditClick(d)}>{t('edit')}</button>
+                <button onClick={() => handleDelete(d._id)}>{t('delete')}</button>
+              </>
+            )}
+          </div>
+        ))
       )}
     </div>
   );

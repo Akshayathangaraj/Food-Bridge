@@ -1,0 +1,28 @@
+.my-donations-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 1rem;
+}
+
+.donation-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.edit-form input,
+.edit-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-right: 10px;
+}
+
+.status-msg {
+  color: green;
+}

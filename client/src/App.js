@@ -9,6 +9,8 @@ import Donate from './components/Donate';
 import FoodAvailable from './components/FoodAvailable';
 import ProtectedRoute from './components/ProtectedRoute';
 import MyDonations from './components/MyDonations'; 
+import ClaimedList from './components/ClaimedList';
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
         <Route path="/user/:userId/donate" element={<Donate />} />
         <Route path="/user/:userId/food-available" element={<FoodAvailable />} />
         <Route path="/user/:userId/my-donations" element={<MyDonations />} />
+        <Route path="/user/:userId/my-donations" element={<ClaimedList />} />
 
       </Routes>
     </Router>
