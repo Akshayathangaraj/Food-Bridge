@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // 👈 Import custom styles
+import './Home.css';
 import logo from '../assets/logo.png';
 const Home = () => {
   const scrollToAbout = (e) => {
@@ -13,7 +13,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Navigation Bar */}
       <nav className="glass-navbar">
         <div className="nav-left">
           <img src={logo} alt="Food Bridge Logo" className="logo" />
@@ -26,17 +25,12 @@ const Home = () => {
           <li><a href="#contact-us">Contact Us</a></li>
         </ul>
       </nav>
-
-      {/* Hero Section */}
       <header className="hero-section">
         <img src={logo} alt="Food Bridge" className="hero-logo" />
         <h1>Welcome to <span className="highlight">Food Bridge</span></h1>
         <p>Connecting hearts through shared meals 🍽️</p>
         <Link to="/signup" className="cta-button">Join Us Now</Link>
       </header>
-
-
-      {/* About Us */}
       <section id="about-us" className="container my-5">
   <h2>About Us</h2>
   <p>
@@ -63,18 +57,12 @@ const Home = () => {
     </p>
   </div>
 </section>
-
-
-
-      {/* Contact Us */}
       <section id="contact-us" className="container my-5">
         <h2>Contact Us</h2>
         <p><strong>Email:</strong> akshayathangaraj02@gmail.com</p>
         <p><strong>Phone:</strong> 960077xxxx</p>
         <p><strong>Address:</strong> Kovilpatti, Tamil Nadu</p>
       </section>
-
-      {/* Footer */}
       <footer className="footer">
         &copy; {new Date().getFullYear()} Food Bridge. All rights reserved.
       </footer>

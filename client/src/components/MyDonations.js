@@ -19,8 +19,6 @@ const MyDonations = () => {
       console.error('Failed to fetch user donations:', error);
     }
   };
-
-  // Subtract 5.5 hours from UTC and format to readable string
   const formatDateMinus5H30 = (dateStr) => {
     const originalDate = new Date(dateStr);
     const adjustedDate = new Date(originalDate.getTime() - (5.5 * 60 * 60 * 1000));
@@ -52,9 +50,7 @@ const MyDonations = () => {
   };
 
   const handleEdit = (donation) => {
-    // Redirect to edit page or open modal (you can replace with actual navigation)
     alert(t('editNotImplemented') + `\n\nID: ${donation._id}`);
-    // Example: navigate(`/edit-donation/${donation._id}`);
   };
 
   return (
@@ -77,8 +73,6 @@ const MyDonations = () => {
               ) : (
                 <p className="mt-2 text-green-600">{t('notClaimed')}</p>
               )}
-
-              {/* Action Buttons */}
               <div className="mt-3 flex gap-2">
                 <button
                   className="bg-yellow-500 text-white px-3 py-1 rounded"

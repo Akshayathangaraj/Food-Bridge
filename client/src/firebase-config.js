@@ -1,6 +1,5 @@
-// src/firebase-config.js
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // ✅ Required for phone auth
+import { getAuth } from "firebase/auth"; 
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,8 +11,6 @@ const firebaseConfig = {
   measurementId: "G-0MTRVBM964"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ Get Auth instance to use in Signup.js
 export const auth = getAuth(app);

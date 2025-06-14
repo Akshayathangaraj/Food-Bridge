@@ -1,30 +1,25 @@
-require('dotenv').config(); // Add at the top
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken'); // <-- added jwt
+const jwt = require('jsonwebtoken');
 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const JWT_SECRET = 'your_jwt_secret_key_here'; // In production, use env variable
+const JWT_SECRET = 'your_jwt_secret_key_here'; 
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-
-// MongoDB connection
 console.log('MONGO_URI:', process.env.MONGO_URI);
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
 
-
-// User Schema
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -37,7 +32,6 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// Food Donation Schema
 const foodDonationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   foodDescription: { type: String, required: true },
@@ -55,11 +49,10 @@ const foodDonationSchema = new mongoose.Schema({
 
 const FoodDonation = mongoose.model('FoodDonation', foodDonationSchema);
 
-// JWT Authentication Middleware
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
-  console.log('Auth Token:', token); // <--- Add this line
+  console.log('Auth Token:', token); 
 
   if (!token) return res.status(401).json({ message: 'Access denied, token missing!' });
 
@@ -69,9 +62,6 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
-
-
-// Signup Route
 app.post('/api/signup', async (req, res) => {
   const { firstName, lastName, district, city, email, phone, password } = req.body;
 
@@ -107,7 +97,6 @@ app.post('/api/signup', async (req, res) => {
   }
 });
 
-// Login Route
 app.post('/api/login', async (req, res) => {
   const { identifier, password } = req.body;
 
@@ -116,7 +105,6 @@ app.post('/api/login', async (req, res) => {
   }
 
   try {
-    // Find user by email or phone
     const user = await User.findOne({
       $or: [{ email: identifier }, { phone: identifier }],
     });
@@ -129,15 +117,12 @@ app.post('/api/login', async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email/phone or password' });
     }
-
-    // Generate JWT token here
     const token = jwt.sign(
       { userId: user._id, firstName: user.firstName }, 
       JWT_SECRET, 
       { expiresIn: '1d' }
     );
 
-    // Return token along with user info
     res.json({ 
       message: 'Login successful', 
       token,
@@ -150,7 +135,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Donation Route
 app.post('/api/donate', async (req, res) => {
   const { name, foodDescription, availableDateTime, phone, address } = req.body;
 
@@ -174,7 +158,6 @@ app.post('/api/donate', async (req, res) => {
   }
 });
 
-// Get Available Donations (Unclaimed & Not Expired)
 app.get('/api/donations', async (req, res) => {
   try {
     const currentTime = new Date();
@@ -190,7 +173,6 @@ app.get('/api/donations', async (req, res) => {
   }
 });
 
-// Claim Donation Route — protected with JWT middleware
 app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
   const donationId = req.params.id;
   const userId = req.user.userId;
@@ -221,7 +203,6 @@ app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 
-  // Check if app._router exists
   if (app._router && app._router.stack) {
     app._router.stack.forEach((r) => {
       if (r.route && r.route.path) {

@@ -61,8 +61,6 @@ const FoodAvailable = () => {
       }
     }
   };
-
-  // ✅ Updated: Subtract 5.5 hours from the time using math
   const formatDateToIST = (dateStr) => {
     const date = new Date(dateStr);
     const adjustedTime = new Date(date.getTime() - 5.5 * 60 * 60 * 1000);

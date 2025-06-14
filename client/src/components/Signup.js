@@ -57,7 +57,7 @@ const Signup = () => {
         size: 'invisible',
         callback: () => {
           console.log("reCAPTCHA solved");
-          handleSendOtp(); // optional auto-retry
+          handleSendOtp(); 
         },
         'expired-callback': () => {
           console.warn("reCAPTCHA expired. Please refresh.");

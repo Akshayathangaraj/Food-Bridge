@@ -5,10 +5,10 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 import Home from './components/Home';
 import Login from './components/Login';
 import UserDashboard from './components/UserDashboard';
-import Donate from './components/Donate'; // Add if exists
-import FoodAvailable from './components/FoodAvailable'; // Add if exists
+import Donate from './components/Donate';
+import FoodAvailable from './components/FoodAvailable';
 import ProtectedRoute from './components/ProtectedRoute';
-import MyDonations from './components/MyDonations'; // ⬅️ Add this line
+import MyDonations from './components/MyDonations'; 
 
 
 function App() {
