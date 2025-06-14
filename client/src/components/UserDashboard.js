@@ -33,9 +33,12 @@ const UserDashboard = () => {
       <main className="dashboard-main">
         <h2>Your Dashboard</h2>
         <p>User ID: <strong>{userId}</strong></p>
+        
         <div className="dashboard-buttons">
           <a href={`/user/${userId}/donate`} className="highlighted-link">🍱 Donate Food</a>
           <a href={`/user/${userId}/food-available`} className="highlighted-link">🔍 View Available Food</a>
+          <a href={`/user/${userId}/my-donations`} className="highlighted-link">📦 My Donations</a>
+          <a href={`/user/${userId}/claimed-food`} className="highlighted-link">✅ Claimed Food List</a>
         </div>
       </main>
     </div>
