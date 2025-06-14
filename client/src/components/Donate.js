@@ -50,31 +50,36 @@ const Donate = () => {
 console.log("Submitting form with data:", formData);
 
   const handleSubmit = async e => {
-    e.preventDefault();
-    const { name, foodDescription, availableDateTime, phone, detailedAddress, state, district, pincode } = formData;
+  e.preventDefault();
+  const { name, foodDescription, availableDateTime, phone, detailedAddress, state, district, pincode } = formData;
 
-    if (!name || !foodDescription || !availableDateTime || !phone || !detailedAddress || !state || !district || !pincode) {
-      return setMessage(t('allFieldsRequired'));
-    }
+  if (!name || !foodDescription || !availableDateTime || !phone || !detailedAddress || !state || !district || !pincode) {
+    return setMessage(t('allFieldsRequired'));
+  }
 
-    try {
-      await axios.post('https://food-bridge-server.onrender.com/api/donate', {
-        name,
-        foodDescription,
-        availableDateTime,
-        phone,
-        address: { detailedAddress, state, district, pincode }
-      });
-      setMessage(t('submissionSuccess'));
-      setFormData({
-        name: '', foodDescription: '', availableDateTime: '', phone: '',
-        detailedAddress: '', state: '', district: '', pincode: ''
-      });
-      setDistrictOptions([]);
-    } catch (err) {
-      setMessage(t('submissionFailed'));
-    }
-  };
+  const userId = localStorage.getItem('userId'); // ✅ Get user ID from localStorage
+
+  try {
+    await axios.post('https://food-bridge-server.onrender.com/api/donate', {
+      userId, // ✅ Pass userId to backend
+      name,
+      foodDescription,
+      availableDateTime,
+      phone,
+      address: { detailedAddress, state, district, pincode }
+    });
+
+    setMessage(t('submissionSuccess'));
+    setFormData({
+      name: '', foodDescription: '', availableDateTime: '', phone: '',
+      detailedAddress: '', state: '', district: '', pincode: ''
+    });
+    setDistrictOptions([]);
+  } catch (err) {
+    setMessage(t('submissionFailed'));
+  }
+};
+
 
   return (
     <div className="donate-container">

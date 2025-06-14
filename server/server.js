@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const foodDonationSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // ✅ Add this line
   name: { type: String, required: true },
   foodDescription: { type: String, required: true },
   availableDateTime: { type: Date, required: true },
@@ -46,6 +47,7 @@ const foodDonationSchema = new mongoose.Schema({
   claimed: { type: Boolean, default: false },
   claimedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null }
 }, { timestamps: true });
+
 
 const FoodDonation = mongoose.model('FoodDonation', foodDonationSchema);
 
@@ -136,19 +138,20 @@ app.post('/api/login', async (req, res) => {
 });
 
 app.post('/api/donate', async (req, res) => {
-  const { name, foodDescription, availableDateTime, phone, address } = req.body;
+  const { userId, name, foodDescription, availableDateTime, phone, address } = req.body;
 
-  if (!name || !foodDescription || !availableDateTime || !phone || !address) {
+  if (!userId || !name || !foodDescription || !availableDateTime || !phone || !address) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
-    const newDonation = new FoodDonation({ 
-      name, 
-      foodDescription, 
-      availableDateTime, 
-      phone, 
-      address 
+    const newDonation = new FoodDonation({
+      userId, // ✅ Save userId in donation document
+      name,
+      foodDescription,
+      availableDateTime,
+      phone,
+      address
     });
     await newDonation.save();
     res.status(201).json({ message: 'Donation added successfully' });
@@ -157,6 +160,7 @@ app.post('/api/donate', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 app.get('/api/donations', async (req, res) => {
   try {
@@ -199,17 +203,16 @@ app.put('/api/donations/:id/claim', authenticateToken, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// Get donations by logged-in user
 app.get('/api/my-donations', authenticateToken, async (req, res) => {
   try {
-    const myDonations = await FoodDonation.find({ phone: req.user.phone });
+    const myDonations = await FoodDonation.find({ userId: req.user.userId }); // ✅ Use userId
     res.json(myDonations);
   } catch (err) {
     console.error('Error fetching my donations:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 // Update donation
 app.put('/api/donations/:id', authenticateToken, async (req, res) => {
