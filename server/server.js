@@ -238,15 +238,17 @@ app.delete('/api/donations/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-// GET /api/claimed-donations
-router.get('/claimed-donations', verifyToken, async (req, res) => {
+// Claimed Donations by logged-in user
+app.get('/api/claimed-donations', authenticateToken, async (req, res) => {
   try {
-    const claimed = await Donation.find({ claimedBy: req.user.id });
+    const claimed = await FoodDonation.find({ claimedBy: req.user.userId });
     res.json(claimed);
   } catch (err) {
+    console.error('Error fetching claimed donations:', err);
     res.status(500).json({ error: 'Failed to fetch claimed donations' });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
