@@ -86,3 +86,29 @@
 .donate-message.error {
   color: #c53030; /* red */
 }
+@media (max-width: 600px) {
+  .donate-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .donate-title {
+    font-size: 1.5rem;
+  }
+
+  .donate-form label {
+    font-size: 0.9rem;
+  }
+
+  .donate-form input,
+  .donate-form textarea,
+  .donate-form select {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .donate-submit-btn {
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+}

@@ -84,3 +84,26 @@
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(56, 142, 60, 0.4);
 }
+@media (max-width: 600px) {
+  .dashboard-navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .dashboard-main {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .dashboard-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .highlighted-link {
+    width: 100%;
+    padding: 12px;
+  }
+}

@@ -84,7 +84,7 @@ button:hover {
 
 @media (max-width: 600px) {
   .my-donations-container {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 
   .donation-card {
