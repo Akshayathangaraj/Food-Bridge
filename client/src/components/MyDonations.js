@@ -111,12 +111,16 @@ const MyDonations = () => {
               </form>
             ) : (
               <>
-                <h4>{d.foodDescription}</h4>
-                <p>{new Date(d.availableDateTime).toLocaleString()}</p>
-                <p>{d.address?.detailedAddress}</p>
-                <button onClick={() => handleEditClick(d)}>{t('edit')}</button>
-                <button onClick={() => handleDelete(d._id)}>{t('delete')}</button>
-              </>
+  <h4>{d.foodDescription}</h4>
+  <p>
+    {new Date(new Date(d.availableDateTime).getTime() - (5.5 * 60 * 60 * 1000))
+      .toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+  </p>
+  <p>{d.address?.detailedAddress}</p>
+  <button onClick={() => handleEditClick(d)}>{t('edit')}</button>
+  <button onClick={() => handleDelete(d._id)}>{t('delete')}</button>
+</>
+
             )}
           </div>
         ))
