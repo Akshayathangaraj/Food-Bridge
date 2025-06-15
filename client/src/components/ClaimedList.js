@@ -23,8 +23,6 @@ const ClaimedList = () => {
 
     fetchClaimedDonations();
   }, [token]);
-
-  // ✅ Add return here
   return (
     <div className="claimed-container">
       <h2>{t('claimedList')}</h2>

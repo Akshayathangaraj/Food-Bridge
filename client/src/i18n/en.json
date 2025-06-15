@@ -82,7 +82,20 @@
   "claimedAt": "Claimed At",
   "confirmDelete": "Are you sure you want to delete this donation?",
   "updateSuccess": "Donation updated successfully",
-  "deleteSuccess": "Donation deleted successfully"
+  "deleteSuccess": "Donation deleted successfully",
+  "aboutUs": "About Us",
+  "contactUs": "Contact Us",
+  "welcome": "Welcome to",
+  "tagline": "Connecting hearts through shared meals 🍽️",
+  "joinNow": "Join Us Now",
+  "aboutDesc": "Food Bridge is a platform dedicated to reducing food waste by connecting donors and receivers in your community. Our mission is to build a sustainable environment by sharing leftover food efficiently.",
+  "aboutMe": "About Me",
+  "intro": "Hi! I'm Akshaya Thangaraj, an IT student and the developer behind Food Bridge. I'm passionate about building tech solutions that bring positive change to communities and solve real-world problems.",
+  "idea": "The idea for Food Bridge came from observing how much food goes to waste every day, while many people still go hungry. I wanted to create a simple, reliable platform that empowers people to make a difference whether by donating surplus food or connecting with those in need.",
+  "vision": "I believe in using technology not just for innovation, but for impact. This project reflects my vision of a kinder, more connected world.",
+  "thanks": "Thank you for visiting Food Bridge. Together, let's bridge the gap and build a more sustainable future!",
+  "allRightsReserved": "All rights reserved."
+
 }
 
 
