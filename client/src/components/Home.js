@@ -26,7 +26,7 @@ const Home = () => {
           <li><Link to="/signup">{t('signup')}</Link></li>
           <li><Link to="/login">{t('login')}</Link></li>
           <li><a href="#about-us" onClick={scrollToAbout}>{t('aboutUs')}</a></li>
-          <li><a href="#user-guide">{t('User Guide')}</a></li>
+          <li><a href="#user-guide">{t('userGuideTitle')}</a></li>
           <li><a href="#contact-us">{t('contactUs')}</a></li>
         </ul>
       </nav>
@@ -52,39 +52,39 @@ const Home = () => {
       </section>
 
       <section id="user-guide" className="container my-5">
-        <h2>How to Use Food Bridge</h2>
+        <h2>{t('userGuideTitle')}</h2>
 
-        <h4>1. 📝 Sign Up or Log In</h4>
-        <p>Create an account with your name, location, phone number (OTP verified), and password.</p>
+        <h4>{t('guide1Title')}</h4>
+        <p>{t('guide1Desc')}</p>
 
         <div className="test-credentials-box">
-          <p><strong>Test credentials:</strong> This project is currently in demo/testing mode and not yet deployed for public or commercial use.</p>
-          <p>Since Firebase's phone number authentication service is paid for production use, OTP verification is limited in this version.</p>
-          <p>Therefore, we are providing testing credentials for you to explore the platform’s features:</p>
-          <p><strong>Phone:</strong> <code>+91 1234567890</code></p>
-          <p><strong>OTP:</strong> <code>098765</code></p>
-          <p>We appreciate your understanding as we continue development toward a full public release.</p>
+          <p><strong>{t('testCredentialsTitle')}:</strong> {t('testModeNote')}</p>
+          <p>{t('otpNote')}</p>
+          <p>{t('testingInstruction')}</p>
+          <p><strong>{t('testPhone')}:</strong> <code>+91 1234567890</code></p>
+          <p><strong>{t('testOTP')}:</strong> <code>098765</code></p>
+          <p>{t('thanksForUnderstanding')}</p>
         </div>
 
-        <h4>2. ❤️ Donate Food</h4>
-        <p>Go to <strong>Donate Food</strong> on your dashboard, describe the food, set the time until it’s available, and enter the address.</p>
+        <h4>{t('guide2Title')}</h4>
+        <p>{t('guide2Desc')}</p>
 
-        <h4>3. 🔍 View Available Food</h4>
-        <p>Click <strong>View Available Food</strong> to see donations in your area. Use the district filter to narrow results.</p>
+        <h4>{t('guide3Title')}</h4>
+        <p>{t('guide3Desc')}</p>
 
-        <h4>4. 🤝 Claim a Donation</h4>
-        <p>Find something useful? Click <strong>Claim</strong>. Once confirmed, you’ll receive the donor's contact number.</p>
+        <h4>{t('guide4Title')}</h4>
+        <p>{t('guide4Desc')}</p>
 
-        <h4>5. 📋 Manage My Donations</h4>
-        <p>As a donor, edit or delete your donations from <strong>My Donations</strong>. Changes update instantly.</p>
+        <h4>{t('guide5Title')}</h4>
+        <p>{t('guide5Desc')}</p>
 
-        <h4>6. ✅ Claimed Food List</h4>
-        <p>Track what you’ve claimed in the <strong>Claimed Food List</strong> – all in one place.</p>
+        <h4>{t('guide6Title')}</h4>
+        <p>{t('guide6Desc')}</p>
 
-        <h4>7. 🚪 Log Out</h4>
-        <p>Don't forget to logout using the button in the top right of your dashboard when done.</p>
+        <h4>{t('guide7Title')}</h4>
+        <p>{t('guide7Desc')}</p>
 
-        <p className="mt-3">🙌 Let’s reduce food waste and feed the hungry — one meal at a time.</p>
+        <p className="mt-3">{t('guideClosing')}</p>
       </section>
 
       <section id="contact-us" className="container my-5">
