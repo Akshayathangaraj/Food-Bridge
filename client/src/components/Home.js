@@ -26,6 +26,7 @@ const Home = () => {
           <li><Link to="/signup">{t('signup')}</Link></li>
           <li><Link to="/login">{t('login')}</Link></li>
           <li><a href="#about-us" onClick={scrollToAbout}>{t('aboutUs')}</a></li>
+          <li><a href="#user-guide">{t('User Guide')}</a></li>
           <li><a href="#contact-us">{t('contactUs')}</a></li>
         </ul>
       </nav>
