@@ -94,7 +94,11 @@
   "idea": "The idea for Food Bridge came from observing how much food goes to waste every day, while many people still go hungry. I wanted to create a simple, reliable platform that empowers people to make a difference whether by donating surplus food or connecting with those in need.",
   "vision": "I believe in using technology not just for innovation, but for impact. This project reflects my vision of a kinder, more connected world.",
   "thanks": "Thank you for visiting Food Bridge. Together, let's bridge the gap and build a more sustainable future!",
-  "allRightsReserved": "All rights reserved."
+  "allRightsReserved": "All rights reserved.",
+  "Already have an account?": "Already have an account?",
+  "login here" : "Login here",
+  "Select District" :"Select District",
+  "optional":"optional"
 
 }
 

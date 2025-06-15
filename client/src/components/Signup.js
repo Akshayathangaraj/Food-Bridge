@@ -103,7 +103,7 @@ const Signup = () => {
       const result = await confirmationResult.confirm(otp);
       console.log("OTP verified ✅", result);
       alert('Phone number verified ✅');
-      submitForm(); // proceed to backend
+      submitForm(); 
     } catch (error) {
       console.error('OTP verification failed ❌', error);
       alert(error.message || 'Invalid OTP. Please try again.');
