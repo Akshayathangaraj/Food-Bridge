@@ -55,10 +55,18 @@ const Home = () => {
 
         <h4>1. 📝 Sign Up or Log In</h4>
         <p>Create an account with your name, location, phone number (OTP verified), and password.</p>
-        <p><strong>Test credentials:</strong> Phone: <code>+91 1234567890</code>, OTP: <code>098765</code></p>
 
-        <h4>2. 🍱 Donate Food</h4>
-        <p>Go to <strong>Donate Food</strong> on your dashboard, describe the food, set the time it’s available, and enter the address.</p>
+        <div className="test-credentials-box">
+          <p><strong>Test credentials:</strong> This project is currently in demo/testing mode and not yet deployed for public or commercial use.</p>
+          <p>Since Firebase's phone number authentication service is paid for production use, OTP verification is limited in this version.</p>
+          <p>Therefore, we are providing testing credentials for you to explore the platform’s features:</p>
+          <p><strong>Phone:</strong> <code>+91 1234567890</code></p>
+          <p><strong>OTP:</strong> <code>098765</code></p>
+          <p>We appreciate your understanding as we continue development toward a full public release.</p>
+        </div>
+
+        <h4>2. ❤️ Donate Food</h4>
+        <p>Go to <strong>Donate Food</strong> on your dashboard, describe the food, set the time until it’s available, and enter the address.</p>
 
         <h4>3. 🔍 View Available Food</h4>
         <p>Click <strong>View Available Food</strong> to see donations in your area. Use the district filter to narrow results.</p>
@@ -66,7 +74,7 @@ const Home = () => {
         <h4>4. 🤝 Claim a Donation</h4>
         <p>Find something useful? Click <strong>Claim</strong>. Once confirmed, you’ll receive the donor's contact number.</p>
 
-        <h4>5. 📦 Manage My Donations</h4>
+        <h4>5. 📋 Manage My Donations</h4>
         <p>As a donor, edit or delete your donations from <strong>My Donations</strong>. Changes update instantly.</p>
 
         <h4>6. ✅ Claimed Food List</h4>
