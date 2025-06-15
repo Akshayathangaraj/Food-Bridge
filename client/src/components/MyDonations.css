@@ -1,28 +1,98 @@
 .my-donations-container {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 1rem;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 2rem;
 }
 
 .donation-card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  background: #ffffffcc;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.donation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .edit-form input,
 .edit-form textarea {
-  display: block;
   width: 100%;
-  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus {
+  border-color: #457b9d;
+  outline: none;
 }
 
 button {
-  margin-right: 10px;
+  background-color: #457b9d;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  margin: 0.5rem 0.5rem 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1d3557;
 }
 
 .status-msg {
-  color: green;
+  text-align: center;
+  font-weight: bold;
+  color: #2a9d8f;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .my-donations-container {
+    padding: 1rem;
+  }
+
+  .donation-card {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
 }
