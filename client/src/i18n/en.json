@@ -99,7 +99,31 @@
   "login here" : "Login here",
   "Select District" :"Select District",
   "optional":"optional",
-  "User Guide":"User Guide"
+  "User Guide":"User Guide",
+  "userGuideTitle": "How to Use Food Bridge",
+  "guide1Title": "1. 📝 Sign Up or Log In",
+  "guide1Desc": "Create an account with your name, location, phone number (OTP verified), and password.",
+  "testCredentialsTitle": "Test credentials",
+  "testModeNote": "This project is currently in demo/testing mode and not yet deployed for public or commercial use.",
+  "otpNote": "Since Firebase's phone number authentication service is paid for production use, OTP verification is limited in this version.",
+  "testingInstruction": "Therefore, we are providing testing credentials for you to explore the platform’s features:",
+  "testPhone": "Phone",
+  "testOTP": "OTP",
+  "thanksForUnderstanding": "We appreciate your understanding as we continue development toward a full public release.",
+  "guide2Title": "2. ❤️ Donate Food",
+  "guide2Desc": "Go to Donate Food on your dashboard, describe the food, set the time until it’s available, and enter the address.",
+  "guide3Title": "3. 🔍 View Available Food",
+  "guide3Desc": "Click View Available Food to see donations in your area. Use the district filter to narrow results.",
+  "guide4Title": "4. 🤝 Claim a Donation",
+  "guide4Desc": "Find something useful? Click Claim. Once confirmed, you’ll receive the donor's contact number.",
+  "guide5Title": "5. 📋 Manage My Donations",
+  "guide5Desc": "As a donor, edit or delete your donations from My Donations. Changes update instantly.",
+  "guide6Title": "6. ✅ Claimed Food List",
+  "guide6Desc": "Track what you’ve claimed in the Claimed Food List – all in one place.",
+  "guide7Title": "7. 🚪 Log Out",
+  "guide7Desc": "Don't forget to logout using the button in the top right of your dashboard when done.",
+  "guideClosing": "🙌 Let’s reduce food waste and feed the hungry — one meal at a time."
+
 
 }
 
