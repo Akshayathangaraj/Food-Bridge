@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './UserDashboard.css';
 
 const UserDashboard = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const userId = localStorage.getItem('userId');
   const firstName = localStorage.getItem('firstName');
 
   useEffect(() => {
     if (!userId) {
-      alert("Please log in to access the dashboard.");
+      alert(t('loginRequired'));
       navigate('/login');
     }
-  }, [userId, navigate]);
+  }, [userId, navigate, t]);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -23,22 +25,24 @@ const UserDashboard = () => {
     <div className="dashboard-container">
       <nav className="dashboard-navbar">
         <div className="nav-left">
-          <span className="welcome-text">👋 Welcome, {firstName || 'User'}</span>
+          <span className="welcome-text">
+            {t('welcomeUser', { name: firstName || 'User' })}
+          </span>
         </div>
         <div className="nav-right">
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          <button className="logout-btn" onClick={handleLogout}>{t('logout')}</button>
         </div>
       </nav>
 
       <main className="dashboard-main">
-        <h2>Your Dashboard</h2>
-        <p>User ID: <strong>{userId}</strong></p>
-        
+        <h2>{t('yourDashboard')}</h2>
+        <p>{t('userId')}: <strong>{userId}</strong></p>
+
         <div className="dashboard-buttons">
-          <a href={`/user/${userId}/donate`} className="highlighted-link">🍱 Donate Food</a>
-          <a href={`/user/${userId}/food-available`} className="highlighted-link">🔍 View Available Food</a>
-          <a href={`/user/${userId}/my-donations`} className="highlighted-link">📦 My Donations</a>
-          <a href={`/user/${userId}/claimed-donations`} className="highlighted-link">✅ Claimed Food List</a>
+          <a href={`/user/${userId}/donate`} className="highlighted-link">{t('donateFood')}</a>
+          <a href={`/user/${userId}/food-available`} className="highlighted-link">{t('viewAvailableFood')}</a>
+          <a href={`/user/${userId}/my-donations`} className="highlighted-link">{t('myDonations')}</a>
+          <a href={`/user/${userId}/claimed-donations`} className="highlighted-link">{t('claimedFoodList')}</a>
         </div>
       </main>
     </div>
