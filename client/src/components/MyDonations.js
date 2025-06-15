@@ -1,4 +1,3 @@
-// src/pages/MyDonations.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MyDonations.css';
@@ -14,19 +13,19 @@ const MyDonations = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetchMyDonations();
-  }, []);
+    const fetchMyDonations = async () => {
+      try {
+        const res = await axios.get('https://food-bridge-server.onrender.com/api/my-donations', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setDonations(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-  const fetchMyDonations = async () => {
-    try {
-      const res = await axios.get('https://food-bridge-server.onrender.com/api/my-donations', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setDonations(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    fetchMyDonations();
+  }, [token]); // Only re-run if token changes
 
   const handleDelete = async (id) => {
     if (!window.confirm(t('confirmDelete'))) return;
@@ -35,7 +34,11 @@ const MyDonations = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessage(t('deleteSuccess'));
-      fetchMyDonations();
+      // Re-fetch donations after deletion
+      const res = await axios.get('https://food-bridge-server.onrender.com/api/my-donations', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setDonations(res.data);
     } catch (err) {
       setMessage(t('deleteError'));
     }
@@ -61,7 +64,11 @@ const MyDonations = () => {
       );
       setMessage(t('updateSuccess'));
       setEditingDonation(null);
-      fetchMyDonations();
+      // Re-fetch after update
+      const res = await axios.get('https://food-bridge-server.onrender.com/api/my-donations', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setDonations(res.data);
     } catch (err) {
       setMessage(t('updateError'));
     }
@@ -78,14 +85,27 @@ const MyDonations = () => {
           <div key={d._id} className="donation-card">
             {editingDonation === d._id ? (
               <form onSubmit={handleEditSubmit} className="edit-form">
-                <input name="foodDescription" value={formData.foodDescription} onChange={handleEditChange} />
-                <input type="datetime-local" name="availableDateTime" value={formData.availableDateTime?.slice(0, 16)} onChange={handleEditChange} />
-                <textarea name="address.detailedAddress" value={formData.address?.detailedAddress} onChange={(e) =>
-                  setFormData(prev => ({
-                    ...prev,
-                    address: { ...prev.address, detailedAddress: e.target.value }
-                  }))
-                } />
+                <input
+                  name="foodDescription"
+                  value={formData.foodDescription}
+                  onChange={handleEditChange}
+                />
+                <input
+                  type="datetime-local"
+                  name="availableDateTime"
+                  value={formData.availableDateTime?.slice(0, 16)}
+                  onChange={handleEditChange}
+                />
+                <textarea
+                  name="address.detailedAddress"
+                  value={formData.address?.detailedAddress}
+                  onChange={(e) =>
+                    setFormData(prev => ({
+                      ...prev,
+                      address: { ...prev.address, detailedAddress: e.target.value }
+                    }))
+                  }
+                />
                 <button type="submit">{t('save')}</button>
                 <button type="button" onClick={() => setEditingDonation(null)}>{t('cancel')}</button>
               </form>
