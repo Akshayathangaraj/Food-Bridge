@@ -50,6 +50,34 @@ const Home = () => {
         </div>
       </section>
 
+      <section id="user-guide" className="container my-5">
+        <h2>How to Use Food Bridge</h2>
+
+        <h4>1. 📝 Sign Up or Log In</h4>
+        <p>Create an account with your name, location, phone number (OTP verified), and password.</p>
+        <p><strong>Test credentials:</strong> Phone: <code>+91 1234567890</code>, OTP: <code>098765</code></p>
+
+        <h4>2. 🍱 Donate Food</h4>
+        <p>Go to <strong>Donate Food</strong> on your dashboard, describe the food, set the time it’s available, and enter the address.</p>
+
+        <h4>3. 🔍 View Available Food</h4>
+        <p>Click <strong>View Available Food</strong> to see donations in your area. Use the district filter to narrow results.</p>
+
+        <h4>4. 🤝 Claim a Donation</h4>
+        <p>Find something useful? Click <strong>Claim</strong>. Once confirmed, you’ll receive the donor's contact number.</p>
+
+        <h4>5. 📦 Manage My Donations</h4>
+        <p>As a donor, edit or delete your donations from <strong>My Donations</strong>. Changes update instantly.</p>
+
+        <h4>6. ✅ Claimed Food List</h4>
+        <p>Track what you’ve claimed in the <strong>Claimed Food List</strong> – all in one place.</p>
+
+        <h4>7. 🚪 Log Out</h4>
+        <p>Don't forget to logout using the button in the top right of your dashboard when done.</p>
+
+        <p className="mt-3">🙌 Let’s reduce food waste and feed the hungry — one meal at a time.</p>
+      </section>
+
       <section id="contact-us" className="container my-5">
         <h2>{t('contactUs')}</h2>
         <p><strong>{t('email')}:</strong> akshayathangaraj02@gmail.com</p>
